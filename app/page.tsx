@@ -8,6 +8,7 @@ import { FaqSection } from "@/app/(landing)/faq-section"
 import { IdeaMarquee } from "@/components/ui/idea-marquee"
 import { HowItWorks } from "@/components/ui/feature-section-with-bento-grid"
 import { FeatureDockSection } from "@/components/ui/feature-dock-section"
+import { MacbookMockup } from "@/components/ui/macbook-mockup"
 
 // ─── Feature Visuals ─────────────────────────────────────────
 
@@ -219,22 +220,8 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="flex justify-center items-center relative">
-              {/* Decorative blob behind the shark */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[380px] h-[380px] rounded-full bg-primary/5 blur-3xl" />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[280px] h-[280px] rounded-full bg-primary/10 blur-2xl" />
-              </div>
-              <Image
-                src="/shark.png"
-                alt="Shark"
-                width={380}
-                height={380}
-                className="relative drop-shadow-2xl"
-                priority
-              />
+            <div className="flex justify-center items-center">
+              <MacbookMockup />
             </div>
           </div>
 
