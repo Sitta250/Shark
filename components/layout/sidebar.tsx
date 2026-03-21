@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard, FolderOpen, CreditCard } from "lucide-react"
+import { LayoutDashboard, FolderOpen, CreditCard, Triangle } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navItems = [
@@ -34,7 +34,7 @@ export function Sidebar() {
           href="/dashboard"
           className="flex items-center gap-2 font-semibold text-sm hover:opacity-80 transition-opacity"
         >
-          <span className="text-lg">🦈</span>
+          <Triangle size={14} className="fill-primary text-primary" />
           <span>Shark</span>
         </Link>
       </div>

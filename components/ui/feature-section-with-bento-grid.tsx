@@ -77,7 +77,7 @@ function BentoCard({
       ref={ref}
       style={{ transitionDelay: `${index * 250}ms` }}
       className={cn(
-        "bg-muted rounded-xl p-8 flex flex-col justify-between aspect-square lg:aspect-auto transition-all duration-1000 ease-out",
+        "bg-muted rounded-xl p-8 flex flex-col justify-between min-h-[200px] sm:aspect-square lg:aspect-auto transition-all duration-1000 ease-out",
         wide ? "lg:col-span-2" : "lg:col-span-1",
         visible
           ? "opacity-100 translate-y-0 scale-100"

@@ -4,7 +4,12 @@
       "mcp__claude_ai_Figma__get_design_context",
       "mcp__claude_ai_Figma__get_screenshot",
       "Bash(npm install:*)",
-      "mcp__claude_ai_Figma__get_metadata"
+      "mcp__claude_ai_Figma__get_metadata",
+      "Bash(find /Users/sitta/Desktop/coding/vibing/cursor/shark -not -path */node_modules/* -not -path */.next/* -not -path */.git/* -type f)",
+      "Bash(npx tsc:*)",
+      "Bash(grep -rn [x{1F300}-x{1F9FF}] /Users/sitta/Desktop/coding/vibing/cursor/shark --include=*.tsx --include=*.ts -l)",
+      "Bash(grep -Pn [^x00-x7F] /Users/sitta/Desktop/coding/vibing/cursor/shark/lib/intake/schema.ts)",
+      "Bash(npx shadcn@latest add input label textarea dialog select separator --yes)"
     ]
   }
 }

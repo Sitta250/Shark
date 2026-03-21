@@ -12,7 +12,7 @@ export default function AuthLayout({
           href="/"
           className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity"
         >
-          🦈 Shark
+          Shark
         </Link>
       </div>
       <div className="w-full max-w-sm">{children}</div>

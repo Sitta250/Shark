@@ -2,6 +2,7 @@
 
 import { signOut } from "@/lib/auth/actions"
 import { LogOut } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 type TopbarProps = {
   email: string
@@ -15,7 +16,6 @@ export function Topbar({ email }: TopbarProps) {
       <div />
 
       <div className="flex items-center gap-2">
-        {/* User info */}
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-md text-sm">
           <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center text-xs font-medium">
             {initial}
@@ -23,15 +23,16 @@ export function Topbar({ email }: TopbarProps) {
           <span className="text-muted-foreground hidden sm:block">{email}</span>
         </div>
 
-        {/* Logout */}
         <form action={signOut}>
-          <button
+          <Button
             type="submit"
-            className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+            variant="ghost"
+            size="icon"
             aria-label="Sign out"
+            className="h-8 w-8 text-muted-foreground"
           >
-            <LogOut size={16} />
-          </button>
+            <LogOut size={15} />
+          </Button>
         </form>
       </div>
     </header>
