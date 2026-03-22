@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shark AI - Business Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#faf8ff",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f2f3ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "tertiary-fixed": "#ffdbd2",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#b7c4ff",
+                        "on-tertiary-fixed-variant": "#891e00",
+                        "on-primary-container": "#dfe3ff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#2b418f",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb4a1",
+                        "secondary-fixed": "#dde1ff",
+                        "on-tertiary-container": "#ffddd5",
+                        "primary": "#003ec7",
+                        "on-tertiary-fixed": "#3c0800",
+                        "on-surface-variant": "#434656",
+                        "secondary-container": "#95aafe",
+                        "primary-fixed": "#dde1ff",
+                        "tertiary": "#952200",
+                        "inverse-surface": "#283044",
+                        "surface": "#faf8ff",
+                        "on-background": "#131b2e",
+                        "surface-dim": "#d2d9f4",
+                        "background": "#faf8ff",
+                        "on-primary-fixed-variant": "#0038b6",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#eaedff",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001452",
+                        "surface-tint": "#004ced",
+                        "primary-container": "#0052ff",
+                        "outline": "#737688",
+                        "on-surface": "#131b2e",
+                        "on-secondary-fixed": "#001452",
+                        "secondary": "#4459a8",
+                        "surface-container-high": "#e2e7ff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "surface-container-highest": "#dae2fd",
+                        "surface-variant": "#dae2fd",
+                        "tertiary-container": "#bf3003",
+                        "on-secondary-container": "#253b89",
+                        "inverse-primary": "#b7c4ff",
+                        "outline-variant": "#c3c5d9"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift { background-color: #f2f3ff; }
+        .glass-header {
+            background: rgba(250, 248, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .ai-insight-border {
+            border: 1px solid;
+            border-image: linear-gradient(to right, #003ec7, transparent) 1;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- SideNavBar (Authority Source: JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 flex flex-col p-4 space-y-2 border-r border-slate-200 dark:border-slate-800 z-40">
+<div class="mb-8 px-2">
+<h1 class="text-lg font-black tracking-tighter text-slate-900 dark:text-slate-50">Shark AI</h1>
+<p class="font-inter text-[13px] font-medium text-slate-500 dark:text-slate-400">Business Engine</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 duration-200 ease-in-out font-inter text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined text-sm">dashboard</span>
+<span>Overview</span>
+</a>
+<!-- Active State: Report -->
+<a class="flex items-center space-x-3 px-3 py-2 bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm rounded-md font-inter text-[13px] font-semibold" href="#">
+<span class="material-symbols-outlined text-sm">description</span>
+<span>Report</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 duration-200 ease-in-out font-inter text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined text-sm">assignment_turned_in</span>
+<span>Tasks</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 duration-200 ease-in-out font-inter text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined text-sm">flag</span>
+<span>Milestones</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 duration-200 ease-in-out font-inter text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined text-sm">psychology</span>
+<span>Assumptions</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 duration-200 ease-in-out font-inter text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined text-sm">sticky_note_2</span>
+<span>Notes</span>
+</a>
+</nav>
+<div class="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-1">
+<button class="w-full text-left flex items-center space-x-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 font-inter text-[13px] font-medium">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span>Settings</span>
+</button>
+<button class="w-full text-left flex items-center space-x-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 font-inter text-[13px] font-medium">
+<span class="material-symbols-outlined text-sm">help_outline</span>
+<span>Support</span>
+</button>
+<button class="mt-4 w-full bg-primary text-white py-2 px-4 rounded-xl font-medium text-[13px] flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>New Project</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen bg-surface">
+<!-- Header -->
+<header class="glass-header sticky top-0 z-30 flex justify-between items-center px-10 h-20">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary">Analysis Report</span>
+<h2 class="text-2xl font-black tracking-tight text-on-surface">Project Shark Verdict</h2>
+</div>
+<div class="flex items-center space-x-4">
+<button class="bg-surface-container-high px-4 py-2 rounded-xl text-sm font-medium text-on-surface hover:bg-surface-container-highest transition-colors">Export PDF</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl text-sm font-semibold shadow-sm hover:opacity-90 transition-all">Share Analysis</button>
+</div>
+</header>
+<div class="max-w-7xl mx-auto px-10 py-12 space-y-12">
+<!-- Executive Verdict Section (Bento Grid Style) -->
+<section class="grid grid-cols-12 gap-6">
+<div class="col-span-8 bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/20 shadow-[0_10px_30px_rgba(19,27,46,0.04)]">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold tracking-tight">Executive Verdict</h3>
+<span class="bg-secondary-container/20 text-on-secondary-container px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase">High Potential</span>
+</div>
+<p class="text-lg leading-relaxed text-on-surface-variant font-medium">
+                        Shark presents a compelling value proposition in the automated financial intelligence sector. By leveraging proprietary LLM architectures, it addresses the 40% efficiency gap in mid-market venture analysis. 
+                    </p>
+<div class="mt-8 grid grid-cols-3 gap-6">
+<div class="p-4 bg-surface-container-low rounded-lg">
+<p class="text-[10px] uppercase font-bold tracking-wider text-outline mb-1">Confidence Score</p>
+<p class="text-3xl font-black text-primary">92%</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg">
+<p class="text-[10px] uppercase font-bold tracking-wider text-outline mb-1">Time to Market</p>
+<p class="text-3xl font-black text-primary">4mo</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg">
+<p class="text-[10px] uppercase font-bold tracking-wider text-outline mb-1">Risk Profile</p>
+<p class="text-3xl font-black text-primary">Low</p>
+</div>
+</div>
+</div>
+<!-- Highlight Boxes Column -->
+<div class="col-span-4 space-y-4">
+<!-- Key Insight -->
+<div class="ai-insight-border bg-surface-container-lowest p-6 rounded-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 opacity-10">
+<span class="material-symbols-outlined text-4xl">lightbulb</span>
+</div>
+<h4 class="text-xs font-bold uppercase tracking-widest text-primary mb-2">Key Insight</h4>
+<p class="text-sm font-medium leading-snug">Fragmented competitors lack the vertical integration Shark offers at the API layer.</p>
+</div>
+<!-- Warning -->
+<div class="bg-error-container/10 border-l-4 border-error p-6 rounded-lg">
+<h4 class="text-xs font-bold uppercase tracking-widest text-error mb-2">Warning</h4>
+<p class="text-sm font-medium leading-snug">Current regulation on automated credit scoring may pivot by Q4 2024.</p>
+</div>
+<!-- Opportunity -->
+<div class="bg-secondary-container/10 border-l-4 border-secondary p-6 rounded-lg">
+<h4 class="text-xs font-bold uppercase tracking-widest text-secondary mb-2">Opportunity</h4>
+<p class="text-sm font-medium leading-snug">Expansion into the Series A diligence market represents a $4.2B untapped ARR.</p>
+</div>
+</div>
+</section>
+<!-- Market Analysis & Competitors (Side-by-side) -->
+<section class="grid grid-cols-2 gap-10">
+<div class="space-y-6">
+<h3 class="text-xl font-bold tracking-tight border-b border-outline-variant/10 pb-4">Market Analysis</h3>
+<div class="relative h-64 rounded-xl overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover mix-blend-multiply opacity-30" data-alt="Abstract data visualization with growth curves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYpgnQ-xK3ZtNllAPGjCfeTS89hCRmq9M3nAeRuR67rLIfqMsaJvqMbcq0Z1jLs5mhbb4D3SnOjX337Bn-Uw68SUVmefZlatrZnITGoD1_b70hJW1DPjYAXHlvUm4-2tSFd8UyHWDQHwAxK-1T5zB90LpT3VJjiLDb7A-o3rrU4ck32LwiJEa21gJV6bV8u6Ke71nXPoIJKAdTVGGl04JKa4qQ117_6wtRhqttIIZA-jYauaQ5W_7L_L5rNiGe-OB5O2UEDTgwiiJq"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<p class="text-4xl font-black tracking-tighter">$14.2B</p>
+<p class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Total Addressable Market (2025)</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant/10">
+<h5 class="text-xs font-bold uppercase tracking-widest mb-2">TAM Growth</h5>
+<p class="text-2xl font-bold">+18.4%</p>
+<p class="text-xs text-on-surface-variant mt-1">Compound Annual Growth</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant/10">
+<h5 class="text-xs font-bold uppercase tracking-widest mb-2">Market Saturation</h5>
+<p class="text-2xl font-bold">12%</p>
+<p class="text-xs text-on-surface-variant mt-1">Early Adoption Phase</p>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="text-xl font-bold tracking-tight border-b border-outline-variant/10 pb-4">Competitors</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant/10 rounded-lg hover:border-primary/40 transition-colors group">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded bg-slate-200 flex items-center justify-center text-xs font-bold">FX</div>
+<div>
+<p class="font-bold">FinX Analytics</p>
+<p class="text-[10px] text-on-surface-variant">Legacy systems, slow processing</p>
+</div>
+</div>
+<span class="text-error font-bold text-xs">-24% Advantage</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant/10 rounded-lg">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded bg-slate-200 flex items-center justify-center text-xs font-bold">DP</div>
+<div>
+<p class="font-bold">DataPulse</p>
+<p class="text-[10px] text-on-surface-variant">Pure UI play, shallow insights</p>
+</div>
+</div>
+<span class="text-error font-bold text-xs">-12% Advantage</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-primary/5 border border-primary/20 rounded-lg">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded bg-primary text-white flex items-center justify-center text-xs font-bold">S</div>
+<div>
+<p class="font-bold text-primary">Shark AI</p>
+<p class="text-[10px] text-primary/80">Proprietary logic, real-time</p>
+</div>
+</div>
+<span class="text-primary font-black text-xs">LEADER</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Business Model Section (Asymmetric) -->
+<section class="grid grid-cols-3 gap-6">
+<div class="col-span-1 space-y-4">
+<h3 class="text-xl font-bold tracking-tight">Business Model</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                        A dual-revenue engine focusing on high-volume enterprise API access and premium seat-based discovery tools.
+                    </p>
+<ul class="space-y-4 mt-6">
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="text-sm font-medium">B2B SaaS Subscription ($2k/mo)</span>
+</li>
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="text-sm font-medium">Consumption-based API (Tiered)</span>
+</li>
+<li class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="text-sm font-medium">Enterprise Custom Fine-tuning</span>
+</li>
+</ul>
+</div>
+<div class="col-span-2 bg-surface-container-low p-8 rounded-xl grid grid-cols-2 gap-8">
+<div class="space-y-2">
+<p class="text-[10px] font-bold tracking-widest uppercase text-outline">Unit Economics</p>
+<div class="h-[1px] w-full bg-outline-variant/30 my-4"></div>
+<div class="flex justify-between items-baseline">
+<span class="text-sm font-medium">LTV</span>
+<span class="text-xl font-bold">$124,000</span>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="text-sm font-medium">CAC</span>
+<span class="text-xl font-bold">$4,200</span>
+</div>
+<div class="flex justify-between items-baseline pt-4 border-t border-outline-variant/30">
+<span class="text-sm font-bold text-primary">Ratio</span>
+<span class="text-2xl font-black text-primary">29.5x</span>
+</div>
+</div>
+<div class="space-y-2">
+<p class="text-[10px] font-bold tracking-widest uppercase text-outline">Projection (Yr 1)</p>
+<div class="h-[1px] w-full bg-outline-variant/30 my-4"></div>
+<div class="space-y-4">
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-3/4"></div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-bold uppercase">
+<span>Target Rev</span>
+<span>$2.4M ARR</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Risks & Next Steps (Final Hierarchy) -->
+<section class="grid grid-cols-2 gap-10 pt-12 border-t border-outline-variant/20">
+<div class="space-y-6">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-error">warning</span>
+<h3 class="text-xl font-bold tracking-tight">Identified Risks</h3>
+</div>
+<div class="space-y-4">
+<div class="p-5 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<div class="flex justify-between mb-2">
+<span class="text-xs font-bold uppercase tracking-wider">Regulatory Drift</span>
+<span class="text-[10px] text-error font-bold">CRITICAL</span>
+</div>
+<p class="text-sm text-on-surface-variant">Upcoming EU AI Act compliance may require fundamental architectural changes to transparency logs.</p>
+</div>
+<div class="p-5 bg-surface-container-lowest rounded-lg border border-outline-variant/10">
+<div class="flex justify-between mb-2">
+<span class="text-xs font-bold uppercase tracking-wider">Talent Acquisition</span>
+<span class="text-[10px] text-on-surface-variant font-bold">MODERATE</span>
+</div>
+<p class="text-sm text-on-surface-variant">Aggressive hiring targets for MLEs may stress current operational runway.</p>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary">rocket_launch</span>
+<h3 class="text-xl font-bold tracking-tight">Next Steps</h3>
+</div>
+<div class="space-y-2">
+<div class="flex items-center p-4 bg-primary text-on-primary rounded-lg font-bold">
+<span class="mr-4 opacity-50">01</span>
+<span>Finalize Beta Waitlist (1,200 firms)</span>
+</div>
+<div class="flex items-center p-4 bg-surface-container-high rounded-lg font-bold">
+<span class="mr-4 opacity-50">02</span>
+<span>Secure Q3 Seed Extension Round</span>
+</div>
+<div class="flex items-center p-4 bg-surface-container-high rounded-lg font-bold">
+<span class="mr-4 opacity-50">03</span>
+<span>Deploy Core Inference v2.4</span>
+</div>
+<div class="flex items-center p-4 bg-surface-container-high rounded-lg font-bold">
+<span class="mr-4 opacity-50">04</span>
+<span>Kickoff Enterprise Pilot with Tier 1 Banks</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer (Authority Source: JSON) -->
+<footer class="w-full py-12 border-t border-slate-100 dark:border-slate-900 bg-white dark:bg-slate-950">
+<div class="max-w-7xl mx-auto px-10 flex justify-between items-center font-inter text-xs text-slate-500">
+<p>© 2024 Shark AI. All rights reserved.</p>
+<div class="flex space-x-6">
+<a class="hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Privacy</a>
+<a class="hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Terms</a>
+<a class="hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Twitter</a>
+<a class="hover:text-slate-800 dark:hover:text-slate-200 transition-colors underline" href="#">Changelog</a>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pricing | Shark AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#faf8ff",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f2f3ff",
+              "inverse-on-surface": "#eef0ff",
+              "tertiary-fixed": "#ffdbd2",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed-dim": "#b7c4ff",
+              "on-tertiary-fixed-variant": "#891e00",
+              "on-primary-container": "#dfe3ff",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#2b418f",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#ffb4a1",
+              "secondary-fixed": "#dde1ff",
+              "on-tertiary-container": "#ffddd5",
+              "primary": "#003ec7",
+              "on-tertiary-fixed": "#3c0800",
+              "on-surface-variant": "#434656",
+              "secondary-container": "#95aafe",
+              "primary-fixed": "#dde1ff",
+              "tertiary": "#952200",
+              "inverse-surface": "#283044",
+              "surface": "#faf8ff",
+              "on-background": "#131b2e",
+              "surface-dim": "#d2d9f4",
+              "background": "#faf8ff",
+              "on-primary-fixed-variant": "#0038b6",
+              "on-secondary": "#ffffff",
+              "surface-container": "#eaedff",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "on-primary-fixed": "#001452",
+              "surface-tint": "#004ced",
+              "primary-container": "#0052ff",
+              "outline": "#737688",
+              "on-surface": "#131b2e",
+              "on-secondary-fixed": "#001452",
+              "secondary": "#4459a8",
+              "surface-container-high": "#e2e7ff",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#b7c4ff",
+              "surface-container-highest": "#dae2fd",
+              "surface-variant": "#dae2fd",
+              "tertiary-container": "#bf3003",
+              "on-secondary-container": "#253b89",
+              "inverse-primary": "#b7c4ff",
+              "outline-variant": "#c3c5d9"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .ghost-border {
+            outline: 1px solid rgba(195, 197, 217, 0.2);
+        }
+        .ai-insight-border {
+            border: 1px solid;
+            border-image-source: linear-gradient(to bottom right, #003ec7, transparent);
+            border-image-slice: 1;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 h-16 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-slate-900 dark:text-slate-50">Shark</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-inter tracking-tight font-medium text-sm transition-colors" href="#">Product</a>
+<a class="text-blue-600 dark:text-blue-400 font-semibold border-b-2 border-blue-600 font-inter tracking-tight text-sm transition-colors" href="#">Pricing</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-inter tracking-tight font-medium text-sm transition-colors" href="#">Features</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-inter tracking-tight font-medium text-sm">Login</button>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl font-inter tracking-tight font-medium text-sm hover:opacity-80 active:scale-95 transition-all">Analyze your idea</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="text-center mb-20">
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface mb-6">Precision Pricing.</h1>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg leading-relaxed">
+                Scalable business intelligence tailored for the ambitious. Choose the tier that matches your architectural complexity.
+            </p>
+</section>
+<!-- Pricing Tiers Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+<!-- Free Tier -->
+<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border flex flex-col hover:bg-surface-bright transition-colors duration-200">
+<div class="mb-8">
+<span class="text-xs font-bold uppercase tracking-widest text-outline mb-2 block">Free</span>
+<h3 class="text-4xl font-extrabold tracking-tight mb-2">$0</h3>
+<p class="text-sm text-on-surface-variant">Perfect for solo founders exploring the baseline.</p>
+</div>
+<div class="space-y-4 mb-10 flex-grow">
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>1 Active Project Analysis</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Standard AI Reporting</span>
+</div>
+<div class="flex items-start gap-3 text-sm text-outline">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+<span>Multi-user Collaboration</span>
+</div>
+</div>
+<button class="w-full py-3 px-4 bg-surface-container-high text-on-surface font-semibold rounded-xl hover:bg-surface-container-highest transition-colors">Get Started</button>
+</div>
+<!-- Starter Tier (Highlighted) -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border-2 border-primary shadow-xl shadow-primary/5 flex flex-col relative scale-105 z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold uppercase tracking-widest py-1 px-4 rounded-full">Recommended</div>
+<div class="mb-8">
+<span class="text-xs font-bold uppercase tracking-widest text-primary mb-2 block">Starter</span>
+<h3 class="text-4xl font-extrabold tracking-tight mb-2">$49<span class="text-lg font-medium text-outline">/mo</span></h3>
+<p class="text-sm text-on-surface-variant">The engine for growing teams needing deep insights.</p>
+</div>
+<div class="space-y-4 mb-10 flex-grow">
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>10 Active Project Analyses</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Advanced Market Assumptions</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>5 Team Member Seats</span>
+</div>
+</div>
+<button class="w-full py-3 px-4 bg-primary text-white font-semibold rounded-xl hover:opacity-90 active:scale-[0.98] transition-all">Start 14-day Free Trial</button>
+</div>
+<!-- Pro Tier -->
+<div class="bg-surface-container-lowest p-8 rounded-xl ghost-border flex flex-col hover:bg-surface-bright transition-colors duration-200">
+<div class="mb-8">
+<span class="text-xs font-bold uppercase tracking-widest text-outline mb-2 block">Pro</span>
+<h3 class="text-4xl font-extrabold tracking-tight mb-2">$199<span class="text-lg font-medium text-outline">/mo</span></h3>
+<p class="text-sm text-on-surface-variant">Maximum throughput for enterprise intelligence.</p>
+</div>
+<div class="space-y-4 mb-10 flex-grow">
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Unlimited Analyses</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>Priority AI Processing</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span>API Access &amp; Integrations</span>
+</div>
+</div>
+<button class="w-full py-3 px-4 bg-surface-container-high text-on-surface font-semibold rounded-xl hover:bg-surface-container-highest transition-colors">Contact Sales</button>
+</div>
+</div>
+<!-- Comparison Table Section -->
+<section class="mb-32">
+<h2 class="text-3xl font-bold tracking-tight mb-12 text-center">Compare every detail</h2>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b-0">
+<th class="text-left p-6 font-bold text-sm tracking-tight">Feature Architecture</th>
+<th class="p-6 font-bold text-sm tracking-tight text-center">Free</th>
+<th class="p-6 font-bold text-sm tracking-tight text-center">Starter</th>
+<th class="p-6 font-bold text-sm tracking-tight text-center">Pro</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr>
+<td class="p-6 text-sm font-medium">Core Intelligence Engine</td>
+<td class="p-6 text-center text-on-surface-variant"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check</span></td>
+<td class="p-6 text-center text-on-surface-variant"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check</span></td>
+<td class="p-6 text-center text-on-surface-variant"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check</span></td>
+</tr>
+<tr>
+<td class="p-6 text-sm font-medium">Historical Snapshot Logs</td>
+<td class="p-6 text-center text-on-surface-variant">7 Days</td>
+<td class="p-6 text-center text-on-surface-variant">30 Days</td>
+<td class="p-6 text-center text-on-surface-variant">Unlimited</td>
+</tr>
+<tr>
+<td class="p-6 text-sm font-medium">Custom Reporting</td>
+<td class="p-6 text-center text-on-surface-variant">—</td>
+<td class="p-6 text-center text-on-surface-variant"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check</span></td>
+<td class="p-6 text-center text-on-surface-variant"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check</span></td>
+</tr>
+<tr>
+<td class="p-6 text-sm font-medium">Dedicated Support Engine</td>
+<td class="p-6 text-center text-on-surface-variant">—</td>
+<td class="p-6 text-center text-on-surface-variant">Standard</td>
+<td class="p-6 text-center text-on-surface-variant">24/7 Priority</td>
+</tr>
+<tr>
+<td class="p-6 text-sm font-medium">Financial Modeling Export</td>
+<td class="p-6 text-center text-on-surface-variant">—</td>
+<td class="p-6 text-center text-on-surface-variant">PDF Only</td>
+<td class="p-6 text-center text-on-surface-variant">All Formats</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- AI Insight Block -->
+<section class="max-w-3xl mx-auto p-12 bg-white ai-insight-border relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary-container opacity-20 text-6xl">psychology</span>
+</div>
+<div class="relative z-10">
+<span class="inline-block text-[10px] font-bold uppercase tracking-[0.2em] bg-primary/10 text-primary px-3 py-1 rounded-sm mb-6">AI Selection Assistant</span>
+<h4 class="text-2xl font-bold tracking-tight mb-4">Unsure which path to take?</h4>
+<p class="text-on-surface-variant leading-relaxed mb-8">
+                    Our Shark Engine has analyzed over 10,000 SaaS deployments. For teams of 3-5 users operating in pre-seed or seed stages, the <strong class="text-on-surface">Starter Tier</strong> provides the optimal balance of data throughput and cost efficiency.
+                </p>
+<div class="flex gap-4">
+<a class="text-primary font-bold text-sm flex items-center gap-1 hover:underline" href="#">
+                        Run personalized analysis <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-slate-100 dark:border-slate-900 bg-white dark:bg-slate-950">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+<span class="font-inter text-xs text-slate-500">© 2024 Shark AI. All rights reserved.</span>
+<div class="flex gap-8">
+<a class="font-inter text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Privacy</a>
+<a class="font-inter text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Terms</a>
+<a class="font-inter text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Twitter</a>
+<a class="font-inter text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Changelog</a>
+</div>
+</div>
+</footer>
+</body></html>

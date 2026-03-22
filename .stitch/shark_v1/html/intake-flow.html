@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>New Project - Shark AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#faf8ff",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f2f3ff",
+              "inverse-on-surface": "#eef0ff",
+              "tertiary-fixed": "#ffdbd2",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed-dim": "#b7c4ff",
+              "on-tertiary-fixed-variant": "#891e00",
+              "on-primary-container": "#dfe3ff",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#2b418f",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#ffb4a1",
+              "secondary-fixed": "#dde1ff",
+              "on-tertiary-container": "#ffddd5",
+              "primary": "#003ec7",
+              "on-tertiary-fixed": "#3c0800",
+              "on-surface-variant": "#434656",
+              "secondary-container": "#95aafe",
+              "primary-fixed": "#dde1ff",
+              "tertiary": "#952200",
+              "inverse-surface": "#283044",
+              "surface": "#faf8ff",
+              "on-background": "#131b2e",
+              "surface-dim": "#d2d9f4",
+              "background": "#faf8ff",
+              "on-primary-fixed-variant": "#0038b6",
+              "on-secondary": "#ffffff",
+              "surface-container": "#eaedff",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "on-primary-fixed": "#001452",
+              "surface-tint": "#004ced",
+              "primary-container": "#0052ff",
+              "outline": "#737688",
+              "on-surface": "#131b2e",
+              "on-secondary-fixed": "#001452",
+              "secondary": "#4459a8",
+              "surface-container-high": "#e2e7ff",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#b7c4ff",
+              "surface-container-highest": "#dae2fd",
+              "surface-variant": "#dae2fd",
+              "tertiary-container": "#bf3003",
+              "on-secondary-container": "#253b89",
+              "inverse-primary": "#b7c4ff",
+              "outline-variant": "#c3c5d9"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-header {
+            background: rgba(250, 248, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .ghost-border {
+            outline: 1px solid rgba(195, 197, 217, 0.2);
+        }
+        .ghost-border:focus-within {
+            outline: 2px solid #003ec7;
+            box-shadow: 0 0 0 4px rgba(221, 225, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar (Shared Component Shell) -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 h-16 max-w-full mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-slate-900 dark:text-slate-50">Shark</span>
+<div class="hidden md:flex gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-inter tracking-tight font-medium text-sm transition-colors" href="#">Product</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-inter tracking-tight font-medium text-sm transition-colors" href="#">Pricing</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-inter tracking-tight font-medium text-sm transition-colors" href="#">Features</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-inter tracking-tight font-medium text-sm px-4 py-2">Login</button>
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-medium text-sm transition-all hover:opacity-90 active:scale-95">Analyze your idea</button>
+</div>
+</div>
+</nav>
+<!-- Main Intake Flow Container -->
+<main class="pt-32 pb-20 px-6 max-w-4xl mx-auto">
+<!-- Progress Indicator -->
+<header class="mb-16">
+<div class="flex items-center justify-between mb-8">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary mb-2 block">Project Intake</span>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Define your vision.</h1>
+<p class="text-on-surface-variant body-md max-w-md">Provide the foundational details for your AI analysis. Precision here yields sharper insights.</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-3xl font-black text-primary/20 tracking-tighter">01 / 03</span>
+<div class="w-32 h-1 bg-surface-container-high mt-2 rounded-full overflow-hidden">
+<div class="w-1/3 h-full bg-primary transition-all duration-500"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Form Section -->
+<div class="space-y-12">
+<!-- Step 1: Core Concept -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-10">
+<div class="md:col-span-4">
+<h3 class="text-lg font-bold tracking-tight text-on-surface mb-1">Core Concept</h3>
+<p class="text-sm text-on-surface-variant">Describe what you are building and why it matters now.</p>
+</div>
+<div class="md:col-span-8 space-y-6">
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1" for="idea">Idea description</label>
+<div class="ghost-border bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-200">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-sm p-4 placeholder:text-outline/40" id="idea" placeholder="e.g. A decentralized platform for sustainable energy trading between residential neighbors..." rows="4"></textarea>
+</div>
+</div>
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1" for="problem">Problem</label>
+<div class="ghost-border bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-200">
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm p-4 placeholder:text-outline/40" id="problem" placeholder="What specific pain point are you solving?" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Tonal Divider -->
+<div class="h-[1px] bg-surface-container-low w-full"></div>
+<!-- Step 2: Market Alignment -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-10">
+<div class="md:col-span-4">
+<h3 class="text-lg font-bold tracking-tight text-on-surface mb-1">Market Alignment</h3>
+<p class="text-sm text-on-surface-variant">Identify who this is for and where you'll operate.</p>
+</div>
+<div class="md:col-span-8 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1" for="customer">Target customer</label>
+<div class="ghost-border bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-200">
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm p-4 placeholder:text-outline/40" id="customer" placeholder="e.g. SMB Owners, Gen Z Designers" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1" for="country">Country</label>
+<div class="ghost-border bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-200">
+<select class="w-full bg-transparent border-none focus:ring-0 text-sm p-4 text-on-surface appearance-none" id="country">
+<option>United States</option>
+<option>United Kingdom</option>
+<option>Germany</option>
+<option>Singapore</option>
+<option>Global</option>
+</select>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1" for="type">Business type</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<button class="px-4 py-3 bg-surface-container-lowest ghost-border rounded-xl text-xs font-medium hover:bg-surface-bright transition-colors text-center border-primary/20">SaaS</button>
+<button class="px-4 py-3 bg-surface-container-lowest ghost-border rounded-xl text-xs font-medium hover:bg-surface-bright transition-colors text-center">Marketplace</button>
+<button class="px-4 py-3 bg-surface-container-lowest ghost-border rounded-xl text-xs font-medium hover:bg-surface-bright transition-colors text-center">E-commerce</button>
+<button class="px-4 py-3 bg-surface-container-lowest ghost-border rounded-xl text-xs font-medium hover:bg-surface-bright transition-colors text-center">Mobile App</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Tonal Divider -->
+<div class="h-[1px] bg-surface-container-low w-full"></div>
+<!-- Step 3: Execution State -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-10">
+<div class="md:col-span-4">
+<h3 class="text-lg font-bold tracking-tight text-on-surface mb-1">Execution State</h3>
+<p class="text-sm text-on-surface-variant">Current progress and resource availability.</p>
+</div>
+<div class="md:col-span-8 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1" for="stage">Stage</label>
+<div class="ghost-border bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-200">
+<select class="w-full bg-transparent border-none focus:ring-0 text-sm p-4 text-on-surface" id="stage">
+<option>Ideation</option>
+<option>MVP Development</option>
+<option>Early Traction</option>
+<option>Scaling</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1" for="budget">Budget</label>
+<div class="ghost-border bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-200">
+<input class="w-full bg-transparent border-none focus:ring-0 text-sm p-4 placeholder:text-outline/40" id="budget" placeholder="e.g. $10k - $50k" type="text"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Navigation Actions -->
+<footer class="mt-20 flex items-center justify-between">
+<button class="group flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors font-medium text-sm">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                Back
+            </button>
+<div class="flex items-center gap-4">
+<button class="px-6 py-3 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low rounded-xl transition-colors">Save Draft</button>
+<button class="px-8 py-3 bg-primary text-on-primary rounded-xl font-bold text-sm flex items-center gap-2 shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all">
+                    Next Step
+                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</footer>
+<!-- AI Insight Block (Design System Specialized Component) -->
+<aside class="mt-24 p-6 rounded-xl relative overflow-hidden bg-surface-container-lowest ghost-border">
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-primary to-transparent"></div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<h4 class="text-sm font-bold tracking-tight text-on-surface mb-1 uppercase text-[11px] tracking-widest text-primary">Intake Tip</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Detailed <span class="text-on-surface font-semibold">Problem</span> descriptions allow Shark AI to cross-reference over 40,000 failed and successful startups in our database to predict your potential churn rate.</p>
+</div>
+</div>
+</aside>
+</main>
+<!-- Simple Footer (Shared Component Shell) -->
+<footer class="w-full py-12 border-t border-slate-100 dark:border-slate-900 bg-white dark:bg-slate-950">
+<div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+<span class="font-inter text-xs text-slate-500">© 2024 Shark AI. All rights reserved.</span>
+<div class="flex gap-6">
+<a class="font-inter text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Privacy</a>
+<a class="font-inter text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Terms</a>
+<a class="font-inter text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Twitter</a>
+<a class="font-inter text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors" href="#">Changelog</a>
+</div>
+</div>
+</footer>
+</body></html>
