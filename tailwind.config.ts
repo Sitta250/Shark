@@ -50,11 +50,27 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        /* shark_v1 surface tier tokens */
+        surface: {
+          low:     "hsl(var(--surface-low))",
+          mid:     "hsl(var(--surface-mid))",
+          high:    "hsl(var(--surface-high))",
+          highest: "hsl(var(--surface-highest))",
+          dim:     "hsl(var(--surface-dim))",
+        },
+        outline: {
+          DEFAULT: "hsl(var(--outline))",
+          variant: "hsl(var(--outline-variant))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        /* shark_v1 ambient shadow — floating elements only */
+        ambient: "0 10px 30px rgba(25, 28, 29, 0.06)",
       },
     },
   },

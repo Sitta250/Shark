@@ -4,64 +4,90 @@
 
 @layer base {
   :root {
-    /* ── Brand palette ──────────────────────────────────────────
-       Main:         hsl(255 82% 89%)  — soft lavender
-       Complement:   hsl(38 85% 65%)   — warm amber
-       Neutral:      hsl(255 30% 97%)  — barely-lavender off-white
-    ────────────────────────────────────────────────────────── */
-    --background:          0 0% 100%;
-    --foreground:          240 8% 6%;
+    /* ── Architectural Oracle palette ────────────────────────────────
+       Primary:   Deep Navy   #001b3d
+       Secondary: Power Purple #5b00df → #7531ff
+       Surface:   Off-white   #f8f9fa
+       Design logic: shark_v1 — no-line rule, tonal layering, ghost borders
+    ─────────────────────────────────────────────────────────────── */
 
+    /* Base surface */
+    --background:          214 17% 97%;   /* #f8f9fa */
+    --foreground:          195 8% 11%;    /* #191c1d */
+
+    /* Cards = surface_container_lowest (white) — lifted from surface */
     --card:                0 0% 100%;
-    --card-foreground:     240 8% 6%;
+    --card-foreground:     195 8% 11%;
 
     --popover:             0 0% 100%;
-    --popover-foreground:  240 8% 6%;
+    --popover-foreground:  195 8% 11%;
 
-    /* primary = vibrant purple */
-    --primary:             255 78% 53%;
-    --primary-foreground:  255 30% 98%;
+    /* Primary = deep navy (structural authority) */
+    --primary:             213 100% 12%;  /* #001b3d */
+    --primary-foreground:  0 0% 100%;
 
-    --secondary:           255 35% 95%;
-    --secondary-foreground:255 40% 22%;
+    /* Secondary = purple (power / CTA) */
+    --secondary:           265 100% 44%;  /* #5b00df */
+    --secondary-foreground:0 0% 100%;
 
-    /* muted gets a subtle lavender tint so cards/chips feel on-brand */
-    --muted:               255 25% 95%;
-    --muted-foreground:    255 10% 46%;
+    /* Muted = surface_container_low (sectioning zone) */
+    --muted:               210 7% 96%;   /* #f3f4f5 */
+    --muted-foreground:    223 7% 29%;   /* #44474e on_surface_variant */
 
-    /* accent = light purple (amber only used on landing page via inline styles) */
-    --accent:              255 50% 94%;
-    --accent-foreground:   255 45% 30%;
+    /* Accent = surface_container_high (hover state) */
+    --accent:              210 3% 91%;   /* #e7e8e9 */
+    --accent-foreground:   195 8% 11%;
 
-    --destructive:         0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive:         0 75% 42%;    /* #ba1a1a */
+    --destructive-foreground: 0 0% 100%;
 
-    --border:              255 25% 90%;
-    --input:               255 25% 90%;
-    --ring:                255 78% 53%;
+    /* Ghost border — used at /20 opacity per shark_v1 no-line rule */
+    --border:              228 8% 80%;   /* #c4c6cf outline_variant */
+    --input:               210 7% 96%;   /* surface_container_low */
+    --ring:                265 100% 44%; /* purple for focus ring */
     --radius:              0.5rem;
+
+    /* ── Surface tier tokens (shark_v1 tonal layering) ─────────── */
+    --surface-low:         210 7% 96%;   /* #f3f4f5 — sectioning */
+    --surface-mid:         210 5% 93%;   /* #edeeef — grouped modules */
+    --surface-high:        210 3% 91%;   /* #e7e8e9 — interactive hover */
+    --surface-highest:     200 4% 89%;   /* #e1e3e4 — overlays */
+    --surface-dim:         210 2% 86%;   /* #d9dadb — de-emphasized bg */
+
+    /* Outline tokens */
+    --outline:             225 4% 47%;   /* #74777f */
+    --outline-variant:     228 8% 80%;   /* #c4c6cf */
+
+    /* ── CTA gradient (shark_v1 "machined" look, Oracle purple) ── */
+    --cta-from:            265 100% 44%; /* #5b00df */
+    --cta-to:              260 100% 60%; /* #7531ff */
   }
 
   .dark {
-    --background:          255 30% 8%;
-    --foreground:          255 20% 96%;
-    --card:                255 25% 11%;
-    --card-foreground:     255 20% 96%;
-    --popover:             255 25% 11%;
-    --popover-foreground:  255 20% 96%;
-    --primary:             255 82% 89%;
-    --primary-foreground:  255 55% 12%;
-    --secondary:           255 20% 18%;
-    --secondary-foreground:255 20% 85%;
-    --muted:               255 20% 16%;
-    --muted-foreground:    255 12% 56%;
-    --accent:              255 30% 20%;
-    --accent-foreground:   255 20% 85%;
+    --background:          213 60% 7%;
+    --foreground:          210 15% 95%;
+    --card:                213 55% 11%;
+    --card-foreground:     210 15% 95%;
+    --popover:             213 55% 11%;
+    --popover-foreground:  210 15% 95%;
+    --primary:             260 100% 75%;
+    --primary-foreground:  213 100% 8%;
+    --secondary:           213 100% 20%;
+    --secondary-foreground:210 15% 90%;
+    --muted:               213 50% 14%;
+    --muted-foreground:    225 10% 55%;
+    --accent:              213 45% 18%;
+    --accent-foreground:   210 15% 90%;
     --destructive:         0 62% 42%;
-    --destructive-foreground: 0 0% 98%;
-    --border:              255 18% 22%;
-    --input:               255 18% 22%;
-    --ring:                255 60% 70%;
+    --destructive-foreground: 0 0% 100%;
+    --border:              213 30% 22%;
+    --input:               213 50% 14%;
+    --ring:                260 100% 75%;
+    --surface-low:         213 55% 13%;
+    --surface-mid:         213 50% 16%;
+    --surface-high:        213 45% 19%;
+    --surface-highest:     213 40% 22%;
+    --surface-dim:         213 60% 5%;
   }
 }
 
@@ -71,5 +97,37 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* shark_v1 typography: tight tracking on display/headline sizes */
+  h1, h2 {
+    letter-spacing: -0.02em;
+  }
+  h3, h4 {
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  /* shark_v1 CTA gradient — used on primary buttons */
+  .bg-cta {
+    background: linear-gradient(135deg, hsl(var(--cta-from)), hsl(var(--cta-to)));
+  }
+
+  /* shark_v1 Glass rule — floating nav / sticky headers */
+  .glass {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* shark_v1 Ambient shadow — floating elements only */
+  .shadow-ambient {
+    box-shadow: 0 10px 30px rgba(25, 28, 29, 0.06);
+  }
+
+  /* shark_v1 ghost border — felt but not seen */
+  .border-ghost {
+    border: 1px solid hsl(var(--outline-variant) / 0.2);
   }
 }

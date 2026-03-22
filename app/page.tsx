@@ -1,9 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import {
-  CheckCircle,
-  Star,
-} from "lucide-react"
+import { CheckCircle, Star, ArrowRight } from "lucide-react"
 import { FaqSection } from "@/app/(landing)/faq-section"
 import { IdeaMarquee } from "@/components/ui/idea-marquee"
 import { HowItWorks } from "@/components/ui/feature-section-with-bento-grid"
@@ -20,13 +17,15 @@ function ReportMockup() {
     { label: "Execution complexity", pct: 38 },
   ]
   return (
-    <div className="rounded-2xl border border-border bg-card shadow-sm p-6 space-y-5">
+    <div className="rounded-lg bg-card p-6 space-y-5 shadow-ambient">
       <div className="flex items-center justify-between">
         <div className="space-y-0.5">
-          <p className="text-xs text-muted-foreground font-medium">Executive verdict</p>
-          <p className="text-sm font-semibold">AI Meal Planning SaaS</p>
+          <p className="text-[0.625rem] text-muted-foreground font-semibold uppercase tracking-wider">
+            Executive verdict
+          </p>
+          <p className="text-sm font-semibold tracking-tight">AI Meal Planning SaaS</p>
         </div>
-        <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+        <span className="px-2 py-0.5 rounded-sm bg-primary text-primary-foreground text-[0.625rem] font-semibold uppercase tracking-wider">
           Score: 87 / 100
         </span>
       </div>
@@ -37,19 +36,19 @@ function ReportMockup() {
               <span>{label}</span>
               <span className="font-medium text-foreground">{pct}%</span>
             </div>
-            <div className="h-1.5 rounded-full bg-muted overflow-hidden">
+            <div className="h-1 rounded-full bg-surface-high overflow-hidden">
               <div
-                className="h-full bg-primary rounded-full opacity-70"
+                className="h-full bg-secondary rounded-full"
                 style={{ width: `${pct}%` }}
               />
             </div>
           </div>
         ))}
       </div>
-      <div className="pt-2 border-t border-border space-y-2">
-        <div className="h-2.5 bg-muted rounded-full w-full" />
-        <div className="h-2.5 bg-muted rounded-full w-4/5" />
-        <div className="h-2.5 bg-muted rounded-full w-3/5" />
+      <div className="pt-3 space-y-2">
+        <div className="h-2 bg-surface-high rounded-full w-full" />
+        <div className="h-2 bg-surface-high rounded-full w-4/5" />
+        <div className="h-2 bg-surface-high rounded-full w-3/5" />
       </div>
     </div>
   )
@@ -62,16 +61,16 @@ function WorkspaceMockup() {
     { title: "Done", items: [{ w: "w-3/4" }, { w: "w-full" }, { w: "w-1/2" }] },
   ]
   return (
-    <div className="rounded-2xl border border-border bg-card shadow-sm p-5 flex gap-3">
+    <div className="rounded-lg bg-card p-5 flex gap-3 shadow-ambient">
       {columns.map(({ title, items }) => (
         <div key={title} className="flex-1 space-y-2 min-w-0">
-          <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider truncate">
+          <p className="text-[0.625rem] font-semibold text-muted-foreground uppercase tracking-wider truncate">
             {title}
           </p>
           {items.map((item, i) => (
-            <div key={i} className="rounded-lg border border-border bg-muted/40 p-3 space-y-2">
-              <div className={`h-2 bg-foreground/15 rounded ${item.w}`} />
-              <div className="h-2 bg-foreground/10 rounded w-2/5" />
+            <div key={i} className="rounded-md bg-surface-low p-3 space-y-2">
+              <div className={`h-1.5 bg-foreground/15 rounded ${item.w}`} />
+              <div className="h-1.5 bg-foreground/10 rounded w-2/5" />
             </div>
           ))}
         </div>
@@ -81,7 +80,6 @@ function WorkspaceMockup() {
 }
 
 // ─── Data ────────────────────────────────────────────────────
-
 
 const featureDetails = [
   {
@@ -110,7 +108,6 @@ const featureDetails = [
   },
 ]
 
-
 const footerLinks = [
   {
     heading: "Product",
@@ -132,42 +129,35 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col text-foreground">
 
-      {/* ── Navbar — merges with purple hero ── */}
-      <header
-        className="sticky top-0 z-50 backdrop-blur-sm"
-        style={{
-          backgroundColor: "hsl(255 78% 53% / 0.92)",
-          borderBottom: "1px solid hsl(255 70% 44%)",
-        }}
-      >
-        <div className="max-w-6xl mx-auto px-6 h-18 flex items-center justify-between py-4">
-          <Link href="/" className="flex items-center gap-3">
-            <Image src="/shark.png" alt="Shark" width={40} height={40} />
-            <span className="font-semibold text-lg tracking-tight text-white">
+      {/* ── Navbar — glass, white bg, no color ── */}
+      <header className="sticky top-0 z-50 glass shadow-ambient">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2.5">
+            <Image src="/shark.png" alt="Shark" width={32} height={32} />
+            <span className="font-semibold text-base tracking-tight text-foreground">
               Shark
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8 text-base">
-            <Link href="#features" className="text-white/75 hover:text-white transition-colors">
+          <nav className="hidden md:flex items-center gap-8 text-sm">
+            <Link href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
               Features
             </Link>
-            <Link href="#how-it-works" className="text-white/75 hover:text-white transition-colors">
+            <Link href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
               How it works
             </Link>
-            <Link href="/pricing" className="text-white/75 hover:text-white transition-colors">
+            <Link href="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
               Pricing
             </Link>
           </nav>
 
           <div className="flex items-center gap-4">
-            <Link href="/login" className="text-base text-white/75 hover:text-white transition-colors">
+            <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Log in
             </Link>
             <Link
               href="/signup"
-              className="text-base px-5 py-2 rounded-md font-medium hover:opacity-90 transition-opacity"
-              style={{ backgroundColor: "hsl(38 85% 62%)", color: "hsl(38 70% 14%)" }}
+              className="bg-cta text-white text-sm px-5 py-2 rounded-xl font-medium hover:brightness-110 transition-all shadow-ambient"
             >
               Get started free
             </Link>
@@ -177,46 +167,38 @@ export default function LandingPage() {
 
       <main className="flex-1">
 
-        {/* ── Hero — 60% purple · 30% neutral · 10% amber ── */}
-        <section
-          className="min-h-[calc(100vh-4.5rem)] px-6 flex flex-col"
-          style={{ backgroundColor: "hsl(255 78% 53%)" }}
-        >
-          {/* Main hero content */}
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center flex-1 py-10">
+        {/* ── Hero — white bg, dark navy headline ── */}
+        <section className="bg-background min-h-[calc(100vh-4rem)] px-6 flex flex-col">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center flex-1 py-20">
             <div className="space-y-8">
-              <h1 className="text-6xl sm:text-7xl font-bold tracking-tight leading-[1.05] text-white">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-surface-high text-muted-foreground text-xs font-semibold uppercase tracking-wider">
+                AI-Powered Venture Intelligence
+              </div>
+              <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
                 Turn your idea into a startup in 5 minutes
               </h1>
-              <p className="text-xl leading-relaxed max-w-md text-white/70">
+              <p className="text-lg leading-relaxed text-muted-foreground max-w-md">
                 Shark turns your rough business idea into a structured report —
                 market, competitors, risks, and an execution plan — in minutes.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                {/* Primary CTA — amber (10% complementary) */}
                 <Link
                   href="/signup"
-                  className="px-6 py-3 rounded-md font-medium text-base text-center transition-opacity hover:opacity-90"
-                  style={{ backgroundColor: "hsl(38 85% 62%)", color: "hsl(38 70% 14%)" }}
+                  className="bg-cta text-white px-6 py-3 rounded-xl font-medium text-sm text-center hover:brightness-110 transition-all shadow-ambient inline-flex items-center justify-center gap-2"
                 >
                   Analyze my idea — it&apos;s free
+                  <ArrowRight size={14} />
                 </Link>
-                {/* Secondary CTA — neutral (30%) */}
                 <Link
                   href="/pricing"
-                  className="px-6 py-3 rounded-md text-base font-medium text-center transition-colors"
-                  style={{
-                    backgroundColor: "hsl(255 78% 62%)",
-                    color: "white",
-                    border: "1px solid hsl(255 70% 68%)",
-                  }}
+                  className="bg-surface-high text-foreground px-6 py-3 rounded-lg text-sm font-medium text-center hover:bg-surface-highest transition-colors"
                 >
                   See pricing
                 </Link>
               </div>
 
-              {/* Social proof — avatars + amber stars */}
+              {/* Social proof */}
               <div className="flex items-center gap-3 pt-1">
                 <div className="flex -space-x-2">
                   {[11, 5, 13, 47, 15].map((n) => (
@@ -224,10 +206,9 @@ export default function LandingPage() {
                       key={n}
                       src={`https://i.pravatar.cc/32?img=${n}`}
                       alt=""
-                      width={32}
-                      height={32}
-                      className="rounded-full object-cover"
-                      style={{ border: "2px solid hsl(255 78% 53%)" }}
+                      width={28}
+                      height={28}
+                      className="rounded-full object-cover ring-2 ring-background"
                     />
                   ))}
                 </div>
@@ -236,13 +217,13 @@ export default function LandingPage() {
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star
                         key={i}
-                        size={13}
-                        style={{ fill: "hsl(38 85% 62%)", color: "hsl(38 85% 62%)" }}
+                        size={12}
+                        className="text-secondary fill-secondary"
                       />
                     ))}
                   </div>
-                  <p className="text-sm text-white/70">
-                    <span className="font-semibold text-white">2,000+</span>{" "}
+                  <p className="text-xs text-muted-foreground">
+                    <span className="font-semibold text-foreground">2,000+</span>{" "}
                     founders already validated their ideas
                   </p>
                 </div>
@@ -254,39 +235,21 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* FUD strip — neutral 30%, sits at hero bottom */}
-          <div
-            className="mt-auto"
-            style={{
-              borderTop: "1px solid hsl(255 70% 62%)",
-              backgroundColor: "hsl(255 78% 47%)",
-            }}
-          >
-            <div className="flex flex-col md:flex-row md:justify-evenly w-full divide-y md:divide-y-0 md:divide-x divide-white/10">
+          {/* ── Stats strip — surface-low separates from hero ── */}
+          <div className="bg-surface-low mt-auto">
+            <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:divide-x divide-outline-variant/20">
               {[
-                {
-                  fear: "Is my idea worth building?",
-                  answer: "Get a clear verdict in 2 minutes.",
-                  number: "01",
-                },
-                {
-                  fear: "I don't know the market.",
-                  answer: "Shark maps competitors, customers & size for you.",
-                  number: "02",
-                },
-                {
-                  fear: "I don't know where to start.",
-                  answer: "Every report includes a 90-day execution plan.",
-                  number: "03",
-                },
+                { fear: "Is my idea worth building?", answer: "Get a clear verdict in 2 minutes.", number: "01" },
+                { fear: "I don't know the market.", answer: "Shark maps competitors, customers & size for you.", number: "02" },
+                { fear: "I don't know where to start.", answer: "Every report includes a 90-day execution plan.", number: "03" },
               ].map(({ fear, answer, number }) => (
-                <div key={fear} className="flex-1 px-6 py-5 md:px-10 md:py-7 flex items-start gap-4">
-                  <span className="text-xl font-bold leading-none mt-0.5 select-none text-white/20 shrink-0">
+                <div key={fear} className="flex-1 px-6 py-6 md:px-10 md:py-8 flex items-start gap-4">
+                  <span className="text-lg font-bold leading-none mt-0.5 select-none text-outline shrink-0 tabular-nums">
                     {number}
                   </span>
-                  <div className="space-y-1.5">
-                    <p className="text-sm font-semibold text-white/50">{fear}</p>
-                    <p className="text-base font-medium text-white">{answer}</p>
+                  <div className="space-y-1">
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{fear}</p>
+                    <p className="text-sm font-medium text-foreground">{answer}</p>
                   </div>
                 </div>
               ))}
@@ -294,45 +257,40 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════
-            POST-HERO: white bg · lavender elements · black text
-        ════════════════════════════════════════════════════════ */}
-
         {/* ── How it works ── */}
-        <section id="how-it-works" className="bg-white">
+        <section id="how-it-works" className="bg-background">
           <HowItWorks />
         </section>
 
         {/* ── Feature dock ── */}
-        <div className="bg-white">
+        <div className="bg-background">
           <FeatureDockSection />
         </div>
 
         {/* ── Feature details (alternating 2-col) ── */}
-        <section className="py-20 px-6 bg-white">
+        <section className="py-24 px-6 bg-surface-low">
           <div className="max-w-5xl mx-auto space-y-24">
             {featureDetails.map(({ label, headline, body, bullets, imageSide }) => (
               <div
                 key={label}
-                className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${
+                className={`grid grid-cols-1 md:grid-cols-2 gap-16 items-center ${
                   imageSide === "left" ? "md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1" : ""
                 }`}
               >
                 <div className="space-y-5">
-                  <p className="text-xs font-semibold text-primary uppercase tracking-widest">{label}</p>
+                  <p className="text-[0.625rem] font-semibold text-secondary uppercase tracking-wider">{label}</p>
                   <h2 className="text-3xl font-bold tracking-tight leading-tight">{headline}</h2>
                   <p className="text-muted-foreground leading-relaxed text-sm">{body}</p>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2.5">
                     {bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2.5 text-sm">
-                        <CheckCircle size={15} className="text-primary shrink-0 mt-0.5" />
+                        <CheckCircle size={14} className="text-secondary shrink-0 mt-0.5" />
                         <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Product mockup */}
                 <div className="flex items-center justify-center">
                   {label === "Structured reports" ? <ReportMockup /> : <WorkspaceMockup />}
                 </div>
@@ -342,38 +300,38 @@ export default function LandingPage() {
         </section>
 
         {/* ── Idea marquee ── */}
-        <div className="bg-white">
+        <div className="bg-background">
           <IdeaMarquee />
         </div>
 
         {/* ── FAQ ── */}
-        <div className="bg-white">
+        <div className="bg-surface-low">
           <FaqSection />
         </div>
 
-        {/* ── Final CTA ── */}
-        <section className="py-24 px-6 text-center bg-white">
+        {/* ── Final CTA — deep navy band (shark_v1 footer CTA pattern) ── */}
+        <section className="py-28 px-6 text-center bg-primary">
           <div className="max-w-2xl mx-auto space-y-6">
-            <p className="text-sm font-medium uppercase tracking-widest text-primary">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/60">
               Get started today
             </p>
-            <h2 className="text-4xl font-bold tracking-tight text-black">
+            <h2 className="text-4xl font-bold tracking-tight text-primary-foreground">
               Your next idea deserves a real answer
             </h2>
-            <p className="leading-relaxed text-black/60">
+            <p className="leading-relaxed text-primary-foreground/60 text-sm">
               Don&apos;t spend months building something nobody wants. Shark
               gives you the analysis and the plan — so you start smart.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
               <Link
                 href="/signup"
-                className="w-full sm:w-auto px-8 py-3 rounded-md font-medium text-sm hover:opacity-90 transition-opacity bg-primary text-primary-foreground"
+                className="w-full sm:w-auto bg-cta text-white px-8 py-3 rounded-xl font-medium text-sm hover:brightness-110 transition-all shadow-ambient"
               >
                 Analyze my idea — it&apos;s free
               </Link>
               <Link
                 href="/pricing"
-                className="w-full sm:w-auto px-8 py-3 border border-border rounded-md text-sm font-medium text-black hover:bg-muted transition-colors"
+                className="w-full sm:w-auto px-8 py-3 rounded-lg text-sm font-medium text-primary-foreground/70 hover:text-primary-foreground border border-primary-foreground/20 hover:border-primary-foreground/40 transition-colors"
               >
                 View plans
               </Link>
@@ -382,19 +340,15 @@ export default function LandingPage() {
         </section>
       </main>
 
-      {/* ── Footer — purple dominant ── */}
-      <footer
-        className="px-6 py-14"
-        style={{ backgroundColor: "hsl(255 78% 53%)" }}
-      >
+      {/* ── Footer — deep navy, structural ── */}
+      <footer className="bg-primary px-6 py-16">
         <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-5 gap-8">
-          {/* Brand */}
           <div className="col-span-2 space-y-3">
-            <Link href="/" className="flex items-center gap-2">
-              <Image src="/shark.png" alt="Shark" width={24} height={24} />
-              <span className="font-semibold text-sm text-white">Shark</span>
+            <Link href="/" className="flex items-center gap-2.5">
+              <Image src="/shark.png" alt="Shark" width={22} height={22} />
+              <span className="font-semibold text-sm text-primary-foreground">Shark</span>
             </Link>
-            <p className="text-xs leading-relaxed max-w-xs text-white/60">
+            <p className="text-xs leading-relaxed max-w-xs text-primary-foreground/50">
               AI-powered platform that turns business ideas into structured
               reports and execution workspaces.
             </p>
@@ -402,16 +356,13 @@ export default function LandingPage() {
 
           {footerLinks.map(({ heading, links }) => (
             <div key={heading} className="space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-widest text-white">
+              <p className="text-[0.625rem] font-semibold uppercase tracking-wider text-primary-foreground/60">
                 {heading}
               </p>
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link}>
-                    <Link
-                      href="#"
-                      className="text-xs text-white/55 hover:text-white transition-colors"
-                    >
+                    <Link href="#" className="text-xs text-primary-foreground/40 hover:text-primary-foreground/80 transition-colors">
                       {link}
                     </Link>
                   </li>
@@ -421,11 +372,8 @@ export default function LandingPage() {
           ))}
         </div>
 
-        <div
-          className="max-w-6xl mx-auto mt-12 pt-6"
-          style={{ borderTop: "1px solid hsl(255 70% 62%)" }}
-        >
-          <p className="text-xs text-white/40">
+        <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-primary-foreground/10">
+          <p className="text-xs text-primary-foreground/30">
             © {new Date().getFullYear()} Shark. All rights reserved.
           </p>
         </div>

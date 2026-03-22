@@ -9,7 +9,26 @@
       "Bash(npx tsc:*)",
       "Bash(grep -rn [x{1F300}-x{1F9FF}] /Users/sitta/Desktop/coding/vibing/cursor/shark --include=*.tsx --include=*.ts -l)",
       "Bash(grep -Pn [^x00-x7F] /Users/sitta/Desktop/coding/vibing/cursor/shark/lib/intake/schema.ts)",
-      "Bash(npx shadcn@latest add input label textarea dialog select separator --yes)"
+      "Bash(npx shadcn@latest add input label textarea dialog select separator --yes)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(npx skills:*)",
+      "Skill(update-config)",
+      "Skill(stitch-design)",
+      "Bash(claude mcp:*)",
+      "mcp__stitch__list_projects",
+      "Bash(npx:*)",
+      "Bash(env)",
+      "Bash(echo:*)",
+      "Bash(npm run:*)",
+      "mcp__stitch__list_screens",
+      "mcp__stitch__get_screen",
+      "WebFetch(domain:contribution.usercontent.google.com)",
+      "WebFetch(domain:lh3.googleusercontent.com)"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "stitch"
+  ]
 }
