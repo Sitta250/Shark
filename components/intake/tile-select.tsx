@@ -30,14 +30,14 @@ export function TileSelect({ options, value, onChange, cols = 3, error }: Props)
               className={cn(
                 "text-left p-3.5 rounded-lg border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
                 selected
-                  ? "border-primary bg-secondary ring-1 ring-primary/30"
-                  : "border-border bg-card hover:border-primary/40 hover:bg-muted/50"
+                  ? "border-secondary/40 bg-secondary/10 ring-1 ring-secondary/20"
+                  : "border-outline-variant/20 bg-card hover:border-secondary/30 hover:bg-surface-low"
               )}
             >
               <p
                 className={cn(
                   "text-sm font-semibold leading-tight",
-                  selected ? "text-primary" : "text-foreground"
+                  selected ? "text-secondary" : "text-foreground"
                 )}
               >
                 {opt.label}

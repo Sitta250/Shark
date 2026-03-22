@@ -4,6 +4,25 @@ import { createServerClient, getUser } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
 import type { Project, ProjectStage } from "@/types"
 
+export async function deleteProject(projectId: string): Promise<void> {
+  const user = await getUser()
+  if (!user) redirect("/login")
+
+  const supabase = await createServerClient()
+  const { error } = await supabase
+    .from("projects")
+    .delete()
+    .eq("id", projectId)
+    .eq("user_id", user.id)
+
+  if (error) {
+    console.error("deleteProject:", error.message)
+    throw new Error(error.message)
+  }
+
+  redirect("/projects")
+}
+
 export async function getProjects(): Promise<Project[]> {
   const user = await getUser()
   if (!user) return []

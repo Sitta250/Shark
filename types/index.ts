@@ -80,6 +80,16 @@ export type Report = {
   updated_at: string
 }
 
+// ─── Notes ───────────────────────────────────────────────────
+export type Note = {
+  id: string
+  project_id: string
+  title: string
+  content: string
+  created_at: string
+  updated_at: string
+}
+
 // ─── Workspace ───────────────────────────────────────────────
 export type TaskStatus = "todo" | "in_progress" | "done"
 
