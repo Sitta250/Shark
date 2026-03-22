@@ -5,15 +5,31 @@ import { Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ProjectCard } from "./project-card"
 import { NewProjectModal } from "./new-project-modal"
+import { UpgradePrompt } from "@/components/billing/upgrade-prompt"
+import { PLAN_LIMITS, PLAN_LABELS } from "@/lib/billing/plans"
 import type { Project } from "@/types"
+import type { Plan } from "@/types"
 
 type Props = {
   projects: Project[]
   userEmail: string
+  plan: Plan
 }
 
-export function ProjectsView({ projects, userEmail }: Props) {
-  const [modalOpen, setModalOpen] = useState(false)
+export function ProjectsView({ projects, userEmail, plan }: Props) {
+  const [modalOpen, setModalOpen]       = useState(false)
+  const [showUpgrade, setShowUpgrade]   = useState(false)
+
+  const limit     = PLAN_LIMITS[plan]
+  const atLimit   = projects.length >= limit
+
+  function handleNewProject() {
+    if (atLimit) {
+      setShowUpgrade(true)
+    } else {
+      setModalOpen(true)
+    }
+  }
 
   return (
     <>
@@ -27,16 +43,29 @@ export function ProjectsView({ projects, userEmail }: Props) {
             </p>
           </div>
           {projects.length > 0 && (
-            <Button size="sm" onClick={() => setModalOpen(true)}>
-              <Plus size={15} />
-              New project
-            </Button>
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-muted-foreground">
+                {projects.length} / {limit} projects · {PLAN_LABELS[plan]}
+              </span>
+              <Button size="sm" onClick={handleNewProject}>
+                <Plus size={15} />
+                New project
+              </Button>
+            </div>
           )}
         </div>
 
+        {/* Upgrade prompt */}
+        {showUpgrade && (
+          <UpgradePrompt
+            currentPlan={plan}
+            onDismiss={() => setShowUpgrade(false)}
+          />
+        )}
+
         {/* Empty state */}
         {projects.length === 0 ? (
-          <div className="rounded-lg border border-border bg-card p-8 space-y-4 max-w-lg">
+          <div className="rounded-lg bg-card p-8 space-y-4 max-w-lg">
             <div className="space-y-1">
               <h2 className="text-lg font-semibold">Welcome to Shark</h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
@@ -54,7 +83,7 @@ export function ProjectsView({ projects, userEmail }: Props) {
                 "Work inside your execution workspace",
               ].map((step, index) => (
                 <li key={step} className="flex items-start gap-3">
-                  <span className="shrink-0 w-5 h-5 rounded-full bg-muted text-xs font-medium flex items-center justify-center mt-0.5">
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-surface-high text-xs font-medium flex items-center justify-center mt-0.5">
                     {index + 1}
                   </span>
                   <span>{step}</span>
@@ -62,7 +91,7 @@ export function ProjectsView({ projects, userEmail }: Props) {
               ))}
             </ol>
 
-            <Button onClick={() => setModalOpen(true)}>
+            <Button onClick={handleNewProject}>
               Create your first project
             </Button>
           </div>
@@ -75,7 +104,12 @@ export function ProjectsView({ projects, userEmail }: Props) {
         )}
       </div>
 
-      <NewProjectModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      {/* Modal — only opens when under limit */}
+      <NewProjectModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        plan={plan}
+      />
     </>
   )
 }

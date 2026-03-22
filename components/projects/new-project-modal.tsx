@@ -19,6 +19,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { UpgradePrompt } from "@/components/billing/upgrade-prompt"
+import type { Plan } from "@/types"
 
 const STAGES = [
   { value: "idea",       label: "Idea"       },
@@ -31,12 +33,15 @@ const STAGES = [
 type Props = {
   open: boolean
   onClose: () => void
+  plan: Plan
 }
 
-export function NewProjectModal({ open, onClose }: Props) {
+export function NewProjectModal({ open, onClose, plan }: Props) {
   const [error, action, pending] = useActionState(createProject, null)
   const [stage, setStage] = useState("idea")
   const formRef = useRef<HTMLFormElement>(null)
+
+  const isAtLimit = error === "PLAN_LIMIT"
 
   useEffect(() => {
     if (!open) {
@@ -44,6 +49,16 @@ export function NewProjectModal({ open, onClose }: Props) {
       setStage("idea")
     }
   }, [open])
+
+  if (isAtLimit) {
+    return (
+      <Dialog open={open} onOpenChange={(o) => !o && onClose()}>
+        <DialogContent className="max-w-md">
+          <UpgradePrompt currentPlan={plan} onDismiss={onClose} />
+        </DialogContent>
+      </Dialog>
+    )
+  }
 
   return (
     <Dialog open={open} onOpenChange={(o) => !o && onClose()}>
@@ -90,7 +105,6 @@ export function NewProjectModal({ open, onClose }: Props) {
 
             <div className="space-y-1.5">
               <Label htmlFor="stage">Stage</Label>
-              {/* Hidden input so FormData picks up the value */}
               <input type="hidden" name="stage" value={stage} />
               <Select value={stage} onValueChange={setStage}>
                 <SelectTrigger id="stage">
@@ -116,7 +130,9 @@ export function NewProjectModal({ open, onClose }: Props) {
             />
           </div>
 
-          {error && <p className="text-xs text-destructive">{error}</p>}
+          {error && !isAtLimit && (
+            <p className="text-xs text-destructive">{error}</p>
+          )}
 
           <div className="flex justify-end gap-2 pt-1">
             <Button type="button" variant="outline" onClick={onClose}>

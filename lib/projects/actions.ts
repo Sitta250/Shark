@@ -2,7 +2,8 @@
 
 import { createServerClient, getUser } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
-import type { Project, ProjectStage } from "@/types"
+import { canCreateProject } from "@/lib/billing/plans"
+import type { Plan, Project, ProjectStage } from "@/types"
 
 export async function deleteProject(projectId: string): Promise<void> {
   const user = await getUser()
@@ -58,6 +59,26 @@ export async function createProject(
   if (!name) return "Project name is required"
 
   const supabase = await createServerClient()
+
+  // ── Plan limit check ───────────────────────────────────────
+  const [{ count }, { data: subData }] = await Promise.all([
+    supabase
+      .from("projects")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", user.id)
+      .then((r) => ({ count: r.count ?? 0 })),
+    supabase
+      .from("subscriptions")
+      .select("plan")
+      .eq("user_id", user.id)
+      .single(),
+  ])
+
+  const plan = (subData?.plan ?? "free") as Plan
+  if (!canCreateProject(plan, count)) {
+    return "PLAN_LIMIT"
+  }
+  // ──────────────────────────────────────────────────────────
   const { data, error } = await supabase
     .from("projects")
     .insert({ user_id: user.id, name, description, country, target_customer, stage })
