@@ -6,26 +6,29 @@ import { createServerClient, getUser } from "@/lib/supabase/server"
 import { STRIPE_PRICES } from "@/lib/billing/plans"
 import type { Plan, Subscription } from "@/types"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
-  apiVersion: "2025-02-24.acacia",
-})
+function getStripe() {
+  return new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
+    apiVersion: "2025-02-24.acacia",
+  })
+}
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"
 
 // ─── Get subscription ─────────────────────────────────────────
+// TODO: Stripe not yet connected — all users get starter by default
 
 export async function getSubscription(): Promise<Subscription | null> {
   const user = await getUser()
   if (!user) return null
 
-  const supabase = await createServerClient()
-  const { data } = await supabase
-    .from("subscriptions")
-    .select("*")
-    .eq("user_id", user.id)
-    .single()
-
-  return data as Subscription | null
+  return {
+    user_id: user.id,
+    plan: "starter",
+    status: "active",
+    stripe_customer_id: null,
+    stripe_subscription_id: null,
+    current_period_end: null,
+  } as unknown as Subscription
 }
 
 // ─── Checkout ─────────────────────────────────────────────────
@@ -46,7 +49,7 @@ export async function createCheckoutSession(
     .eq("user_id", user.id)
     .single()
 
-  const session = await stripe.checkout.sessions.create({
+  const session = await getStripe().checkout.sessions.create({
     mode: "subscription",
     payment_method_types: ["card"],
     line_items: [{ price: priceId, quantity: 1 }],
@@ -75,7 +78,7 @@ export async function createPortalSession(): Promise<{ error?: string }> {
 
   if (!sub?.stripe_customer_id) return { error: "No billing account found" }
 
-  const session = await stripe.billingPortal.sessions.create({
+  const session = await getStripe().billingPortal.sessions.create({
     customer: sub.stripe_customer_id,
     return_url: `${APP_URL}/dashboard`,
   })

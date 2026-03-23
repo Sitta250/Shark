@@ -10,11 +10,15 @@ export default async function AppLayout({
   const user = await getUser()
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
-      <Sidebar />
-      <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
-        <Topbar email={user?.email ?? ""} />
-        <main className="flex-1 overflow-y-auto">{children}</main>
+    <div className="flex h-screen overflow-hidden bg-background print:block print:h-auto print:overflow-visible">
+      <div className="print:hidden">
+        <Sidebar />
+      </div>
+      <div className="flex flex-col flex-1 min-w-0 overflow-hidden print:block print:overflow-visible">
+        <div className="print:hidden">
+          <Topbar email={user?.email ?? ""} />
+        </div>
+        <main className="flex-1 overflow-y-auto print:overflow-visible">{children}</main>
       </div>
     </div>
   )

@@ -108,6 +108,13 @@
   }
 }
 
+@media print {
+  @page { margin: 1.5cm; }
+  body   { background: white !important; color: black !important; }
+  /* hide workspace tabs when printing */
+  [data-no-print] { display: none !important; }
+}
+
 @layer utilities {
   /* shark_v1 CTA gradient — used on primary buttons */
   .bg-cta {

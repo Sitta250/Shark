@@ -16,6 +16,7 @@ import { IntakeFlow } from "@/components/intake/intake-flow"
 import { DeleteProjectButton } from "@/components/projects/delete-project-button"
 import { GenerateReportButton } from "@/components/report/generate-report-button"
 import { ReportView } from "@/components/report/report-view"
+import { ProjectSummary } from "@/components/report/project-summary"
 import { WorkspaceShell } from "@/components/workspace/workspace-shell"
 import { TasksModule } from "@/components/workspace/tasks-module"
 import { MilestonesModule } from "@/components/workspace/milestones-module"
@@ -42,6 +43,7 @@ const STAGE_LABELS: Record<string, string> = {
 }
 
 const VALID_TABS: WorkspaceTab[] = [
+  "overview",
   "report",
   "tasks",
   "milestones",
@@ -117,8 +119,9 @@ export default async function ProjectPage({ params, searchParams }: Props) {
         ) : (
           <WorkspaceTabs
             projectId={id}
+            projectName={project.name}
             sections={report.sections as ReportSections}
-            tab={isValidTab(tabParam) ? tabParam : "report"}
+            tab={isValidTab(tabParam) ? tabParam : "overview"}
           />
         )}
 
@@ -161,10 +164,12 @@ function ReportPrompt({
 
 async function WorkspaceTabs({
   projectId,
+  projectName,
   sections,
   tab,
 }: {
   projectId: string
+  projectName: string
   sections: ReportSections
   tab: WorkspaceTab
 }) {
@@ -180,10 +185,14 @@ async function WorkspaceTabs({
 
   return (
     <WorkspaceShell activeTab={tab}>
-      {workspaceEmpty && tab !== "report" && (
+      {workspaceEmpty && tab !== "report" && tab !== "overview" && (
         <div className="mb-5">
           <SeedBanner projectId={projectId} sections={sections} />
         </div>
+      )}
+
+      {tab === "overview" && (
+        <ProjectSummary projectName={projectName} sections={sections} />
       )}
 
       {tab === "report" && (

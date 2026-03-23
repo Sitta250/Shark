@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 
 const TABS = [
-  { id: "report",      label: "Report" },
+  { id: "overview",    label: "Overview" },
+  { id: "report",      label: "Full report" },
   { id: "tasks",       label: "Tasks" },
   { id: "milestones",  label: "Milestones" },
   { id: "assumptions", label: "Assumptions" },
@@ -25,7 +26,7 @@ export function WorkspaceShell({ activeTab, children }: Props) {
   return (
     <div className="space-y-5">
       {/* Tab bar */}
-      <div className="flex items-center gap-1 border-b border-outline-variant/20">
+      <div className="flex items-center gap-1 border-b border-outline-variant/20" data-no-print>
         {TABS.map(({ id, label }) => {
           const href = `${pathname}?tab=${id}`
           const active = id === activeTab

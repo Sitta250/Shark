@@ -12,9 +12,9 @@ const PLANS = [
     id:    "free" as const,
     name:  "Free",
     price: "$0",
-    description: "Try Shark with one idea.",
+    description: "Try Shark with up to 2 ideas.",
     features: [
-      "1 project",
+      "2 active projects",
       "Full AI report generation",
       "Execution workspace",
       "Tasks & milestones",
@@ -27,7 +27,7 @@ const PLANS = [
     description: "For founders validating multiple ideas.",
     popular: true,
     features: [
-      "3 projects",
+      "5 active projects",
       "Full AI report generation",
       "Execution workspace",
       "Tasks & milestones",
@@ -41,7 +41,7 @@ const PLANS = [
     price: "$49",
     description: "For power users and consultants.",
     features: [
-      "10 projects",
+      "10 active projects",
       "Full AI report generation",
       "Execution workspace",
       "Tasks & milestones",

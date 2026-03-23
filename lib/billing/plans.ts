@@ -3,8 +3,8 @@ import type { Plan } from "@/types"
 // ─── Plan limits ──────────────────────────────────────────────
 
 export const PLAN_LIMITS: Record<Plan, number> = {
-  free:    1,
-  starter: 3,
+  free:    2,
+  starter: 5,
   pro:     10,
 }
 
