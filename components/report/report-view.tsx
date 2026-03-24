@@ -7,13 +7,14 @@ import type {
   RiskSeverity,
 } from "@/lib/report/schema"
 import { SectionCard, BulletList, LabeledText } from "./section-card"
+import { CompetitorCard } from "./competitor-card"
 
 // ─── Style maps ───────────────────────────────────────────────
 
 const VERDICT_BADGE: Record<ReportVerdict, string> = {
-  go:      "bg-emerald-50 text-emerald-700",
-  caution: "bg-amber-50 text-amber-700",
-  avoid:   "bg-red-50 text-red-700",
+  go:      "bg-emerald-100 text-emerald-700",
+  caution: "bg-amber-100 text-amber-700",
+  avoid:   "bg-red-100 text-red-700",
 }
 
 const VERDICT_SCORE: Record<ReportVerdict, string> = {
@@ -22,24 +23,30 @@ const VERDICT_SCORE: Record<ReportVerdict, string> = {
   avoid:   "text-red-600",
 }
 
+const VERDICT_CARD_BG: Record<ReportVerdict, string> = {
+  go:      "bg-emerald-50/60",
+  caution: "bg-amber-50/60",
+  avoid:   "bg-red-50/60",
+}
+
 const PAIN_BADGE: Record<PainIntensity, string> = {
   low:      "bg-surface-high text-muted-foreground",
-  medium:   "bg-amber-50 text-amber-700",
-  high:     "bg-orange-50 text-orange-700",
-  critical: "bg-red-50 text-red-700",
+  medium:   "bg-amber-100 text-amber-700",
+  high:     "bg-orange-100 text-orange-700",
+  critical: "bg-red-100 text-red-700",
 }
 
 const GROWTH_BADGE: Record<GrowthTrend, string> = {
-  declining:   "bg-red-50 text-red-700",
+  declining:   "bg-red-100 text-red-700",
   stable:      "bg-surface-high text-muted-foreground",
-  growing:     "bg-emerald-50 text-emerald-700",
-  hypergrowth: "bg-secondary/10 text-secondary",
+  growing:     "bg-emerald-100 text-emerald-700",
+  hypergrowth: "bg-secondary/15 text-secondary",
 }
 
-const RISK_BADGE: Record<RiskSeverity, string> = {
-  low:    "bg-surface-high text-muted-foreground",
-  medium: "bg-amber-50 text-amber-700",
-  high:   "bg-red-50 text-red-700",
+const RISK_ROW_BG: Record<RiskSeverity, string> = {
+  low:    "bg-surface-low",
+  medium: "bg-amber-50/70",
+  high:   "bg-red-50/70",
 }
 
 // ─── Shared primitives ────────────────────────────────────────
@@ -55,9 +62,14 @@ function Badge({ label, className }: { label: string; className?: string }) {
   )
 }
 
-function StatTile({ label, value, valueClass }: { label: string; value: string; valueClass?: string }) {
+function StatTile({ label, value, valueClass, className }: {
+  label: string
+  value: string
+  valueClass?: string
+  className?: string
+}) {
   return (
-    <div className="bg-surface-low rounded-lg p-4">
+    <div className={cn("rounded-lg p-4", className ?? "bg-white/60")}>
       <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">{label}</p>
       <p className={cn("text-2xl font-bold tracking-tight", valueClass)}>{value}</p>
     </div>
@@ -68,12 +80,12 @@ function StatTile({ label, value, valueClass }: { label: string; value: string; 
 
 function GroupDivider({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-4 py-2">
-      <div className="h-px flex-1 bg-outline-variant/20" />
-      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 shrink-0">
+    <div className="flex items-center gap-4 py-4 mt-3">
+      <div className="h-px flex-1 bg-secondary/20" />
+      <span className="bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shrink-0">
         {label}
-      </p>
-      <div className="h-px flex-1 bg-outline-variant/20" />
+      </span>
+      <div className="h-px flex-1 bg-secondary/20" />
     </div>
   )
 }
@@ -81,35 +93,38 @@ function GroupDivider({ label }: { label: string }) {
 // ─── Sections ─────────────────────────────────────────────────
 
 function ExecutiveVerdictSection({ s }: { s: ReportSections["executive_verdict"] }) {
+  const cardBg = VERDICT_CARD_BG[s.recommendation]
+
   return (
-    <div className="bg-card rounded-xl ring-1 ring-outline-variant/20 p-8 relative overflow-hidden">
-      {/* Subtle bg accent */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-secondary/5 rounded-full -mr-24 -mt-24 blur-3xl pointer-events-none" />
+    <div className={cn(
+      "rounded-xl ring-1 ring-outline-variant/20 p-8 relative overflow-hidden",
+      cardBg,
+    )}>
+      {/* Glow accent */}
+      <div className="absolute top-0 right-0 w-80 h-80 bg-white/40 rounded-full -mr-24 -mt-24 blur-3xl pointer-events-none" />
 
       <div className="relative">
-        {/* Label + title */}
         <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">
           Executive verdict
         </p>
         <h3 className="text-xl font-semibold tracking-tight mb-6">{s.headline}</h3>
 
         {/* Stat tiles */}
-        <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="flex gap-3 mb-6">
           <StatTile
-            label="Confidence score"
+            label="Score"
             value={`${s.score}/100`}
             valueClass={VERDICT_SCORE[s.recommendation]}
+            className="bg-white/70"
           />
-          <div className="bg-surface-low rounded-lg p-4 col-span-2 flex flex-col justify-between">
+          <div className="bg-white/70 rounded-lg p-4 flex flex-col justify-between">
             <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Recommendation</p>
-            <Badge label={s.recommendation} className={cn("self-start text-sm px-3 py-1", VERDICT_BADGE[s.recommendation])} />
+            <Badge label={s.recommendation} className={cn("self-start", VERDICT_BADGE[s.recommendation])} />
           </div>
         </div>
 
-        {/* Summary */}
         <p className="text-sm text-muted-foreground leading-relaxed mb-6">{s.summary}</p>
 
-        {/* Strengths */}
         <div>
           <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-3">Key strengths</p>
           <BulletList items={s.key_strengths} />
@@ -125,7 +140,7 @@ function CustomerSection({ s }: { s: ReportSections["customer_and_pain"] }) {
       <div className="grid grid-cols-2 gap-4">
         <LabeledText label="Primary customer" value={s.primary_customer} />
         <div className="space-y-1.5">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Pain intensity</p>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">Pain intensity</p>
           <Badge label={s.pain_intensity} className={PAIN_BADGE[s.pain_intensity]} />
         </div>
       </div>
@@ -147,13 +162,13 @@ function MarketSection({ s }: { s: ReportSections["market_attractiveness"] }) {
         />
       </div>
       <p className="text-xs text-muted-foreground italic leading-relaxed">{s.tam_note}</p>
-      <div className="grid grid-cols-2 gap-6">
-        <div>
-          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-3">Tailwinds</p>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="bg-emerald-50/60 rounded-lg p-4">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700 mb-3">Tailwinds</p>
           <BulletList items={s.key_tailwinds} />
         </div>
-        <div>
-          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-3">Headwinds</p>
+        <div className="bg-red-50/60 rounded-lg p-4">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-red-700 mb-3">Headwinds</p>
           <BulletList items={s.key_headwinds} />
         </div>
       </div>
@@ -167,14 +182,12 @@ function CompetitorsSection({ s }: { s: ReportSections["competitors"] }) {
       <p className="text-sm text-muted-foreground leading-relaxed">{s.landscape_summary}</p>
       <div className="space-y-3">
         {s.competitors.map((c, i) => (
-          <div key={i} className="rounded-lg bg-surface-low p-5 space-y-2">
-            <p className="text-sm font-semibold">{c.name}</p>
-            <p className="text-xs text-muted-foreground leading-relaxed">{c.description}</p>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-semibold text-foreground">Weakness: </span>
-              {c.weakness}
-            </p>
-          </div>
+          <CompetitorCard
+            key={i}
+            name={c.name}
+            description={c.description}
+            weakness={c.weakness}
+          />
         ))}
       </div>
       <LabeledText label="Positioning gap" value={s.positioning_gap} />
@@ -219,16 +232,16 @@ function GoToMarketSection({ s }: { s: ReportSections["go_to_market"] }) {
 function MvpSection({ s }: { s: ReportSections["mvp_features"] }) {
   return (
     <SectionCard label="MVP" title={`Build time: ${s.build_time_estimate}`}>
-      <div className="grid grid-cols-3 gap-6">
-        <div>
-          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-3">Must-have</p>
+      <div className="grid grid-cols-3 gap-4">
+        <div className="bg-secondary/[0.05] rounded-lg p-4">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-secondary/70 mb-3">Must-have</p>
           <BulletList items={s.core_features} />
         </div>
-        <div>
+        <div className="bg-surface-low rounded-lg p-4">
           <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-3">Phase 2</p>
           <BulletList items={s.phase_two_features} />
         </div>
-        <div>
+        <div className="bg-surface-low rounded-lg p-4">
           <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-3">Cut for now</p>
           <BulletList items={s.avoid} />
         </div>
@@ -242,10 +255,17 @@ function RisksSection({ risks }: { risks: ReportSections["risks"] }) {
     <SectionCard label="Risks" title="Key risks to address">
       <div className="space-y-3">
         {risks.map((r, i) => (
-          <div key={i} className="rounded-lg bg-surface-low p-5 space-y-2.5">
+          <div key={i} className={cn("rounded-lg p-5 space-y-2.5", RISK_ROW_BG[r.severity])}>
             <div className="flex items-center gap-2.5">
               <p className="text-sm font-semibold">{r.title}</p>
-              <Badge label={r.severity} className={RISK_BADGE[r.severity]} />
+              <Badge
+                label={r.severity}
+                className={cn(
+                  r.severity === "high"   && "bg-red-100 text-red-700",
+                  r.severity === "medium" && "bg-amber-100 text-amber-700",
+                  r.severity === "low"    && "bg-surface-high text-muted-foreground",
+                )}
+              />
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">{r.description}</p>
             <p className="text-xs text-muted-foreground">
@@ -261,16 +281,16 @@ function RisksSection({ risks }: { risks: ReportSections["risks"] }) {
 
 function NextStepsSection({ s }: { s: ReportSections["next_steps"] }) {
   const phases = [
-    { label: "This week",    items: s.week_1 },
-    { label: "This month",   items: s.month_1 },
-    { label: "This quarter", items: s.quarter_1 },
+    { label: "This week",    items: s.week_1,    bg: "bg-secondary/[0.06]", labelColor: "text-secondary/80" },
+    { label: "This month",   items: s.month_1,   bg: "bg-surface-low",       labelColor: "text-muted-foreground" },
+    { label: "This quarter", items: s.quarter_1, bg: "bg-surface-low",       labelColor: "text-muted-foreground" },
   ]
   return (
     <SectionCard label="Next steps" title="What to do now">
-      <div className="grid grid-cols-3 gap-8">
-        {phases.map(({ label, items }) => (
-          <div key={label}>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-4">
+      <div className="grid grid-cols-3 gap-4">
+        {phases.map(({ label, items, bg, labelColor }) => (
+          <div key={label} className={cn("rounded-lg p-4", bg)}>
+            <p className={cn("text-[10px] font-bold uppercase tracking-widest mb-4", labelColor)}>
               {label}
             </p>
             <ol className="space-y-3">

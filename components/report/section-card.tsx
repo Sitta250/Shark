@@ -28,7 +28,7 @@ export function SectionCard({ title, label, children, className, hero }: Props) 
           {title}
         </h3>
       </div>
-      <div className="space-y-5">
+      <div className="space-y-6">
         {children}
       </div>
     </div>
@@ -50,7 +50,7 @@ export function BulletList({ items }: { items: string[] }) {
 
 export function LabeledText({ label, value }: { label: string; value: string }) {
   return (
-    <div className="space-y-1">
+    <div className="space-y-1.5">
       <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">{label}</p>
       <p className="text-sm font-medium leading-relaxed">{value}</p>
     </div>

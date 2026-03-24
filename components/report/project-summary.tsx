@@ -4,10 +4,10 @@ import { ExportButton } from "./export-button"
 
 // ─── Verdict styling ──────────────────────────────────────────
 
-const VERDICT_STYLES: Record<ReportVerdict, { badge: string; score: string }> = {
-  go:      { badge: "bg-emerald-50 text-emerald-700", score: "text-emerald-600" },
-  caution: { badge: "bg-amber-50 text-amber-700",    score: "text-amber-600"   },
-  avoid:   { badge: "bg-red-50 text-red-700",         score: "text-red-600"    },
+const VERDICT_STYLES: Record<ReportVerdict, { badge: string; score: string; cardBg: string }> = {
+  go:      { badge: "bg-emerald-100 text-emerald-700", score: "text-emerald-600", cardBg: "bg-emerald-50/60" },
+  caution: { badge: "bg-amber-100 text-amber-700",     score: "text-amber-600",   cardBg: "bg-amber-50/60"  },
+  avoid:   { badge: "bg-red-100 text-red-700",          score: "text-red-600",     cardBg: "bg-red-50/60"   },
 }
 
 function getBiggestRisk(risks: ReportSections["risks"]) {
@@ -24,14 +24,16 @@ function getBiggestRisk(risks: ReportSections["risks"]) {
 function SummaryBlock({
   label,
   labelColor,
+  bg,
   children,
 }: {
   label: string
   labelColor?: string
+  bg?: string
   children: React.ReactNode
 }) {
   return (
-    <div className="rounded-xl bg-card ring-1 ring-outline-variant/20 p-7 space-y-3">
+    <div className={cn("rounded-xl ring-1 ring-outline-variant/20 p-7 space-y-3", bg ?? "bg-card")}>
       <p className={cn(
         "text-[10px] font-bold uppercase tracking-widest",
         labelColor ?? "text-muted-foreground"
@@ -75,17 +77,17 @@ export function ProjectSummary({
       </div>
 
       {/* Verdict hero */}
-      <div className="rounded-xl bg-card ring-1 ring-outline-variant/20 p-8 space-y-4 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-72 h-72 bg-secondary/5 rounded-full -mr-24 -mt-24 blur-3xl pointer-events-none" />
+      <div className={cn("rounded-xl ring-1 ring-outline-variant/20 p-8 space-y-4 relative overflow-hidden", styles.cardBg)}>
+        <div className="absolute top-0 right-0 w-72 h-72 bg-white/40 rounded-full -mr-24 -mt-24 blur-3xl pointer-events-none" />
         <div className="relative">
           <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Verdict</p>
           <p className="text-lg font-semibold tracking-tight leading-snug mb-5">{ev.headline}</p>
           <div className="grid grid-cols-3 gap-4 mb-5">
-            <div className="bg-surface-low rounded-lg p-4">
+            <div className="bg-white/70 rounded-lg p-4">
               <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Score</p>
               <p className={cn("text-2xl font-bold", styles.score)}>{ev.score}<span className="text-sm font-normal text-muted-foreground">/100</span></p>
             </div>
-            <div className="bg-surface-low rounded-lg p-4 col-span-2 flex flex-col justify-between">
+            <div className="bg-white/70 rounded-lg p-4 col-span-2 flex flex-col justify-between">
               <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Recommendation</p>
               <span className={cn("self-start inline-flex items-center rounded-sm px-2.5 py-1 text-xs font-bold uppercase tracking-widest", styles.badge)}>
                 {ev.recommendation}
@@ -98,11 +100,11 @@ export function ProjectSummary({
 
       {/* Opportunity + Risk */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <SummaryBlock label="Biggest opportunity" labelColor="text-emerald-600">
+        <SummaryBlock label="Biggest opportunity" labelColor="text-emerald-700" bg="bg-emerald-50/70">
           <p className="text-sm leading-relaxed">{opportunity}</p>
         </SummaryBlock>
 
-        <SummaryBlock label="Biggest risk" labelColor="text-red-600">
+        <SummaryBlock label="Biggest risk" labelColor="text-red-700" bg="bg-red-50/70">
           <p className="text-sm font-medium">{risk?.title}</p>
           <p className="text-xs text-muted-foreground leading-relaxed">
             <span className="font-medium text-foreground">Mitigation: </span>
