@@ -31,9 +31,9 @@ function SummaryBlock({
   children: React.ReactNode
 }) {
   return (
-    <div className="rounded-xl bg-card p-5 space-y-2.5">
+    <div className="rounded-xl bg-card ring-1 ring-outline-variant/20 p-7 space-y-3">
       <p className={cn(
-        "text-[0.625rem] font-semibold uppercase tracking-wider",
+        "text-[10px] font-bold uppercase tracking-widest",
         labelColor ?? "text-muted-foreground"
       )}>
         {label}
@@ -64,7 +64,7 @@ export function ProjectSummary({
       {/* Header */}
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-[0.625rem] font-semibold uppercase tracking-wider text-muted-foreground mb-1">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">
             Project summary
           </p>
           <h2 className="text-2xl font-bold tracking-tight">{projectName}</h2>
@@ -75,23 +75,25 @@ export function ProjectSummary({
       </div>
 
       {/* Verdict hero */}
-      <div className="rounded-xl bg-card p-6 space-y-3">
-        <div className="flex items-center gap-4 flex-wrap">
-          <div className="flex items-baseline gap-1">
-            <span className={cn("text-5xl font-bold tracking-tight tabular-nums", styles.score)}>
-              {ev.score}
-            </span>
-            <span className="text-sm text-muted-foreground">/100</span>
+      <div className="rounded-xl bg-card ring-1 ring-outline-variant/20 p-8 space-y-4 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-72 h-72 bg-secondary/5 rounded-full -mr-24 -mt-24 blur-3xl pointer-events-none" />
+        <div className="relative">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Verdict</p>
+          <p className="text-lg font-semibold tracking-tight leading-snug mb-5">{ev.headline}</p>
+          <div className="grid grid-cols-3 gap-4 mb-5">
+            <div className="bg-surface-low rounded-lg p-4">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Score</p>
+              <p className={cn("text-2xl font-bold", styles.score)}>{ev.score}<span className="text-sm font-normal text-muted-foreground">/100</span></p>
+            </div>
+            <div className="bg-surface-low rounded-lg p-4 col-span-2 flex flex-col justify-between">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Recommendation</p>
+              <span className={cn("self-start inline-flex items-center rounded-sm px-2.5 py-1 text-xs font-bold uppercase tracking-widest", styles.badge)}>
+                {ev.recommendation}
+              </span>
+            </div>
           </div>
-          <span className={cn(
-            "inline-flex items-center rounded-sm px-2.5 py-1 text-xs font-semibold uppercase tracking-wider",
-            styles.badge,
-          )}>
-            {ev.recommendation}
-          </span>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">{ev.summary}</p>
         </div>
-        <p className="text-lg font-semibold tracking-tight leading-snug">{ev.headline}</p>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">{ev.summary}</p>
       </div>
 
       {/* Opportunity + Risk */}
